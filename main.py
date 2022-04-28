@@ -7,8 +7,8 @@ params = parser.parse_args()
 
 def main():
   print(params.thing)
-  modules.busqueda(params.thing)
-  
+  image_url = modules.busqueda(params.thing)
+  modules.download_image(image_url)
 
 if __name__ == '__main__':
   main()
