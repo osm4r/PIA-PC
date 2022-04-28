@@ -1,7 +1,7 @@
 from googlesearch import search
 
 def busqueda(name):
-  g_search = search(name, num_results=3)
+  g_search = search(name, num_results=1)
+  image = "https://www.google.com/" + g_search[1]
   print(g_search)
-  for url in range(len(g_search)):
-    print(f"url {url}", g_search[url])
+  print(image)
