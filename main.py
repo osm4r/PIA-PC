@@ -14,7 +14,7 @@ def main():
   if params.url is not None:
     modules.download_image_by_url(params.url)
 
-  # modules.get_hash("C:\\Users\\osm4r\\Desktop\\piaa", "C:\\Users\\osm4r\\Desktop\\Sway.pdf") # "C:\\Users\\osm4r\\Desktop\\Sway.pdf"
+  modules.get_hash(r"C:\Users\larub\OneDrive\Escritorio\English\Session2.pdf") # Incluir 'r' antes de la cadena para que funcione
 
 if __name__ == '__main__':
   main()
