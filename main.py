@@ -13,8 +13,10 @@ def main():
   modules.download_bing_image(params.thing)
   if params.url is not None:
     modules.download_image_by_url(params.url)
+  
+  print(modules.list_images('images', params.thing))
 
-  modules.get_hash(r"C:\Users\larub\OneDrive\Escritorio\English\Session2.pdf") # Incluir 'r' antes de la cadena para que funcione
+  # modules.get_hash(r"C:\Users\larub\OneDrive\Escritorio\English\Session2.pdf") # Incluir 'r' antes de la cadena para que funcione
 
 if __name__ == '__main__':
   main()

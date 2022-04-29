@@ -1,5 +1,7 @@
+import os
 import requests
 import subprocess
+import exifread
 from bing_image_downloader import downloader
 
 #FUNCIONES inecesarias
@@ -28,7 +30,24 @@ def download_image_by_url(url):
     for ima in response.iter_content(chunk_size=50000):
       file.write(ima)
     print("Se descargo correctamente la imagen")
+
+def list_images(folder, name):
+  files_list = os.listdir(folder)
+  dirs = []
+  for file in range(len(files_list)):
+    dir = f"{folder}/{name}/" + files_list[file]
+    dirs.append(dir)
+  return dirs
+
+def get_metadata(*args):
+  for image in args:
+    imagen = open(image, 'rb')
+    # Obtiene valores exif de imagen
+    valores_exif = exifread.process_file(imagen)
     
+    # Imprimir valores de la imagen
+    for tag in valores_exif.keys():
+      print(str(tag) + " : " + str(valores_exif[tag]))
 
 # Funcion para obtener el valor hash de uno o mas archivos o incluso una carpeta (MEDIANTE POWERSHELL)
 # Osmar Abelardo Bustos Vazquez
