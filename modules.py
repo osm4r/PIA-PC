@@ -32,20 +32,23 @@ def download_image_by_url(url):
     print("Se descargo correctamente la imagen")
 
 def list_images(folder, name):
-  files_list = os.listdir(folder)
+  files_list = os.listdir(folder + "/" + name)
   dirs = []
   for file in range(len(files_list)):
     dir = f"{folder}/{name}/" + files_list[file]
     dirs.append(dir)
   return dirs
 
-def get_metadata(*args):
-  for image in args:
-    imagen = open(image, 'rb')
-    # Obtiene valores exif de imagen
+def get_metadata(dirs):
+  for dir in dirs:
+    imagen = open(dir, 'rb')
+    # Obtiene valores exif de imagen+
     valores_exif = exifread.process_file(imagen)
+
     
     # Imprimir valores de la imagen
+    print(dir)
+    print(valores_exif)
     for tag in valores_exif.keys():
       print(str(tag) + " : " + str(valores_exif[tag]))
 
