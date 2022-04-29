@@ -4,18 +4,6 @@ import subprocess
 import exifread
 from bing_image_downloader import downloader
 
-#FUNCIONES inecesarias
-'''def busqueda(name):
-  g_search = search(name, num_results=1)
-  if len(g_search) == 0:
-    print("no results")
-    exit()
-  else:
-    image = "https://www.google.com/" + g_search[1]
-    # print(g_search)
-    # print(image)
-    return image'''
-
 # Funcion para descargar una imagen sobre algun tema/persona por medio de bing
 # Osmar Abelardo Bustos Vazquez
 def download_bing_image(name):
@@ -39,16 +27,26 @@ def list_images(folder, name):
     dirs.append(dir)
   return dirs
 
-def get_metadata(dirs):
-  for dir in dirs:
-    imagen = open(dir, 'rb')
+def get_metadata(dirs, name):
+  os.mkdir("metadata")
+  os.mkdir(f"metadata/{name}")
+  for dir in range(len(dirs)):
+    imagen = open(dirs[dir], 'rb')
     # Obtiene valores exif de imagen+
     valores_exif = exifread.process_file(imagen)
 
     
     # Imprimir valores de la imagen
-    print(dir)
+    print(dirs[dir])
+    print(len(valores_exif))
+    if len(valores_exif) == 0:
+      continue
     print(valores_exif)
+    
+    with open(f"metadata/{name}/Image_{dir+1}.txt", "a") as file:
+      for tag in valores_exif.keys():
+        file.write(str(tag) + " : " + str(valores_exif[tag]) + "\n")
+
     for tag in valores_exif.keys():
       print(str(tag) + " : " + str(valores_exif[tag]))
 
