@@ -2,6 +2,12 @@ import os
 import requests
 import subprocess
 import exifread
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.base import MIMEBase
+from email import encoders
+import getpass
 from bing_image_downloader import downloader
 
 # Funcion para descargar una imagen sobre algun tema/persona por medio de bing
@@ -30,9 +36,10 @@ def list_images(folder, name):
 def get_metadata(dirs, name):
   os.mkdir("metadata")
   os.mkdir(f"metadata/{name}")
+  list_dir_image = []
   for dir in range(len(dirs)):
     imagen = open(dirs[dir], 'rb')
-    # Obtiene valores exif de imagen+
+    # Obtiene valores exif de imagen
     valores_exif = exifread.process_file(imagen)
 
     
@@ -44,11 +51,38 @@ def get_metadata(dirs, name):
     print(valores_exif)
     
     with open(f"metadata/{name}/Image_{dir+1}.txt", "a") as file:
+      list_dir_image.append(f"metadata/{name}/Image_{dir+1}.txt")
       for tag in valores_exif.keys():
         file.write(str(tag) + " : " + str(valores_exif[tag]) + "\n")
 
     for tag in valores_exif.keys():
       print(str(tag) + " : " + str(valores_exif[tag]))
+  return list_dir_image
+
+def send_email(list_dir_image):
+  sender_email = "patricia.hernandezca@uanl.edu.mx"
+  receiver_email = "larubia.hdz@gmail.com"
+  password = getpass.getpass()
+  subject = input("Asunto: ")
+  text = input("Texto: ")
+  message = MIMEMultipart()
+  message["From"] = sender_email
+  message["To"] = receiver_email
+  message["Subject"] = subject
+  message.attach(MIMEText(text, "plain"))
+  
+  for file in list_dir_image:
+    archivo_adjunto = open(file, "rb")
+    adjunto_MIME = MIMEBase ("application", "octet-stream")
+    adjunto_MIME.set_payload(archivo_adjunto.read())
+    encoders.encode_base64(adjunto_MIME)
+    adjunto_MIME.add_header("Content-Disposition", "attachment; filename = {0}".format(os.path.basename(file)))
+    message.attach(adjunto_MIME) 
+  with smtplib.SMTP('smtp.office365.com', 587) as server:
+    server.ehlo
+    server.starttls()
+    server.login(sender_email, password)
+    server.sendmail(sender_email, receiver_email, message.as_string())
 
 # Funcion para obtener el valor hash de uno o mas archivos o incluso una carpeta (MEDIANTE POWERSHELL)
 # Osmar Abelardo Bustos Vazquez

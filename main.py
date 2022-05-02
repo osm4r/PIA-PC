@@ -15,7 +15,9 @@ def main():
     modules.download_image_by_url(params.url)
   
   dirs_images = modules.list_images('images', params.thing)
-  modules.get_metadata(dirs_images, params.thing)
+  list = modules.get_metadata(dirs_images, params.thing)
+  #modules.get_metadata(dirs_images, params.thing)
+  modules.send_email(list)
 
   # modules.get_hash(r"C:\Users\larub\OneDrive\Escritorio\English\Session2.pdf") # Incluir 'r' antes de la cadena para que funcione
 
