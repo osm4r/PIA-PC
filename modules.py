@@ -36,6 +36,7 @@ def list_images(folder, name):
 def get_metadata(dirs, name):
   os.mkdir("metadata")
   os.mkdir(f"metadata/{name}")
+
   list_dir_image = []
   for dir in range(len(dirs)):
     imagen = open(dirs[dir], 'rb')
@@ -48,23 +49,21 @@ def get_metadata(dirs, name):
     print(len(valores_exif))
     if len(valores_exif) == 0:
       continue
-    print(valores_exif)
+    # print(valores_exif)
     
     with open(f"metadata/{name}/Image_{dir+1}.txt", "a") as file:
       list_dir_image.append(f"metadata/{name}/Image_{dir+1}.txt")
       for tag in valores_exif.keys():
         file.write(str(tag) + " : " + str(valores_exif[tag]) + "\n")
 
-    for tag in valores_exif.keys():
-      print(str(tag) + " : " + str(valores_exif[tag]))
   return list_dir_image
 
 def send_email(list_dir_image):
   sender_email = "patricia.hernandezca@uanl.edu.mx"
   receiver_email = "larubia.hdz@gmail.com"
-  password = getpass.getpass()
-  subject = input("Asunto: ")
-  text = input("Texto: ")
+  password = "5iypoyBB"
+  subject = "Metadata"
+  text = "Metadata files"
   message = MIMEMultipart()
   message["From"] = sender_email
   message["To"] = receiver_email
