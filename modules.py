@@ -11,13 +11,14 @@ import getpass
 from bing_image_downloader import downloader
 
 # Funcion para descargar una imagen sobre algun tema/persona por medio de bing
-# Osmar Abelardo Bustos Vazquez
 def download_bing_image(name):
-  downloader.download(name, limit=5,  output_dir='images', 
+  if not os.path.exists('data'):
+    os.makedirs('data')
+  downloader.download(name, limit=5,  output_dir=f"data/{name}", 
   adult_filter_off=True, force_replace=False, timeout=60)
+  os.rename(f"data/{name}/{name}", f"data/{name}/images")
 
 # Funcion para descargar imagen por url en específico
-# Osmar Abelardo Bustos Vazquez
 def download_image_by_url(url):
   response = requests.get(url)
   with open("imagen.jpg","wb")as file:
@@ -25,17 +26,18 @@ def download_image_by_url(url):
       file.write(ima)
     print("Se descargo correctamente la imagen")
 
-def list_images(folder, name):
-  files_list = os.listdir(folder + "/" + name)
+def list_images(name):
+  files_list = os.listdir(f"data/{name}/images")
   dirs = []
   for file in range(len(files_list)):
-    dir = f"{folder}/{name}/" + files_list[file]
+    dir = f"data/{name}/images/{files_list[file]}"
     dirs.append(dir)
   return dirs
 
+# Funcion para obtener metadatos de las imágenes descargadas
 def get_metadata(dirs, name):
-  os.mkdir("metadata")
-  os.mkdir(f"metadata/{name}")
+  if not os.path.exists(f'data/{name}/metadata'):
+    os.makedirs(f'data/{name}/metadata')
 
   list_dir_image = []
   for dir in range(len(dirs)):
@@ -43,24 +45,24 @@ def get_metadata(dirs, name):
     # Obtiene valores exif de imagen
     valores_exif = exifread.process_file(imagen)
 
-    
     # Imprimir valores de la imagen
-    print(dirs[dir])
     print(len(valores_exif))
     if len(valores_exif) == 0:
+      print(f"la imagen {dirs[dir]} no tiene metadatos")
       continue
     # print(valores_exif)
     
-    with open(f"metadata/{name}/Image_{dir+1}.txt", "a") as file:
-      list_dir_image.append(f"metadata/{name}/Image_{dir+1}.txt")
+    with open(f"data/{name}/metadata/Image_{dir+1}.txt", "a") as file:
+      list_dir_image.append(f"data/{name}/metadata/Image_{dir+1}.txt")
       for tag in valores_exif.keys():
         file.write(str(tag) + " : " + str(valores_exif[tag]) + "\n")
 
   return list_dir_image
 
+# Funcion para mandar correo con metadatos
 def send_email(list_dir_image):
   sender_email = "patricia.hernandezca@uanl.edu.mx"
-  receiver_email = "larubia.hdz@gmail.com"
+  receiver_email = "osmarfishy@gmail.com"
   password = "5iypoyBB"
   subject = "Metadata"
   text = "Metadata files"
@@ -84,7 +86,6 @@ def send_email(list_dir_image):
     server.sendmail(sender_email, receiver_email, message.as_string())
 
 # Funcion para obtener el valor hash de uno o mas archivos o incluso una carpeta (MEDIANTE POWERSHELL)
-# Osmar Abelardo Bustos Vazquez
 def get_hash(*args):
   try:
     data = []

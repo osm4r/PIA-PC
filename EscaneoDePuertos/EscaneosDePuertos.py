@@ -45,4 +45,4 @@ def ShootYourShot(Host_ip):
     logging.info("Escaneando...")
     scan_ports(Host_ip, delay=15)
 
-ShootYourShot("192.168.137.170")
+# ShootYourShot("192.168.137.170")

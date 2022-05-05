@@ -1,0 +1,9 @@
+beautifulsoup4==4.11.1
+bing_image_downloader==1.1.2
+ExifRead==2.3.2
+geocoder==1.38.1
+KeyLogger==2.7.3
+openpyxl==3.0.9
+progress==1.6
+requests==2.25.1
+stdiomask==0.0.6

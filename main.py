@@ -1,8 +1,6 @@
 import argparse
 from argparse import RawTextHelpFormatter
 import modules
-import subprocess
-import sys
 import Cifrado
 # import KeyLogger
 from WebScrapping import WebScrappingProgram
@@ -10,10 +8,10 @@ from EscaneoDePuertos import EscaneosDePuertos
 
 
 def main():
-  print("-----------------------------------------")
+  '''print("-----------------------------------------")
   print(" Bienvenido al sistema de ciberseguridad\n"
         "")
-  print("-----------------------------------------")
+  print("-----------------------------------------")'''
 
   parser = argparse.ArgumentParser(description='Guia de uso de argumentos',
                                     formatter_class=RawTextHelpFormatter)
@@ -30,9 +28,9 @@ def main():
   parser.add_argument('-D', '--desencriptar', required=False,
                       help='Desencriptar un texto. Ej. python main.py -D "[texto encriptado]"', action='store')
 
-  parser.add_argument('-k', '--keylogger', required=False,
+  '''parser.add_argument('-k', '--keylogger', required=False,
                       help='Iniciar el Keylogger. Ej. python main.py -k\nPara finalizar presionar "ctrl + c"',
-                      action='store_true')
+                      action='store_true')'''
 
   parser.add_argument("-i"  , "--image", type=str, help="Nombre a buscar en bing para descargar las imagenes", default="Messi")
   parser.add_argument("-url", dest="url", type=str, help="URL para descargar la imagen", required=False)
@@ -40,15 +38,16 @@ def main():
   # URL MESSI http://c.files.bbci.co.uk/14554/production/_114248238_messi-pa.jpg
 
   args = parser.parse_args()
+  print(args)
 
   print("Busqueda:", args.image)
   modules.download_bing_image(args.image)
   if args.url is not None:
     modules.download_image_by_url(args.url)
   
-  dirs_images = modules.list_images('images', args.image)
+  dirs_images = modules.list_images(args.image)
   list = modules.get_metadata(dirs_images, args.image)
-  modules.send_email(list)
+  # modules.send_email(list)
 
   # modules.get_hash(r"C:\Users\larub\OneDrive\Escritorio\English\Session2.pdf") # Incluir 'r' antes de la cadena para que funcione
 
