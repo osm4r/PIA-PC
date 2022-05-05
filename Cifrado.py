@@ -1,12 +1,16 @@
-
-
 abc = {
         'A': 'E', 'B': 'F', 'C': 'G', 'D': 'H', 'E': 'I',
         'F': 'J', 'G': 'K', 'H': 'L', 'I': 'M', 'J': 'N',
         'K': 'O', 'L': 'P', 'M': 'Q', 'N': 'R', 'O': 'S',
         'P': 'T', 'Q': 'U', 'R': 'V', 'S': 'W', 'T': 'X',
         'U': 'Y', 'V': 'Z', 'W': 'A', 'X': 'B', 'Y': 'C',
-        'Z': 'D'
+        'Z': 'D', 
+        'a': 'e', 'b': 'f', 'c': 'g', 'd': 'h', 'e': 'i',
+        'f': 'j', 'g': 'k', 'h': 'l', 'i': 'm', 'j': 'n',
+        'k': 'o', 'l': 'p', 'm': 'q', 'n': 'r', 'o': 's',
+        'p': 't', 'q': 'u', 'r': 'v', 's': 'w', 't': 'x',
+        'u': 'y', 'v': 'z', 'w': 'a', 'x': 'b', 'y': 'c',
+        'z': 'd'
     }
 
 
@@ -21,7 +25,7 @@ def Encriptar(Frase):
         if not encontrado: #if encontrado == False
                             # if encontrado != True
             FraseEnc += letra
-    print(FraseEnc)
+    print("Cadena encriptada: ", FraseEnc)
 
 def Desencriptar(Frase):
     FraseDes = ''
@@ -33,32 +37,4 @@ def Desencriptar(Frase):
                 encontrado = True
         if not encontrado: #if encontrado == False
             FraseDes += letra
-    print(FraseDes)
-
-
-#Cifrado César
-#La letra más común del abc es la E
-# A --> E, B ==> F, C --> G
-# Ejemplo: CASA
-# GEWE
-def StartTheGame():
-
-
-    # Aqui empieza el menu
-    print("Menú\n1) Encriptar\n2) Desencriptar\n3) Salir")
-    x = int(input("Opción: "))
-    while x != 3:
-        if x == 1:
-            frase = input('Frase en texto claro: ')
-            frase = frase.upper()
-            fraseEnc = Encriptar(frase)
-            print(fraseEnc)
-        elif x == 2:
-            frase = input('Frase encriptada: ')
-            frase = frase.upper()
-            print(Desencriptar(frase))
-        else:
-            print("Error! Opción no válida")
-        print("Menú\n1) Encriptar\n2) Desencriptar\n3) Salir")
-        x = int(input("Opción: "))
-
+    print("Cadena desencriptada: ", FraseDes)
