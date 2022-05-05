@@ -50,7 +50,7 @@ def main():
   if len(list) == 0:
     print("No se encontraron metadatos en las imagenes")
   else:
-    modules.send_email(list)
+    modules.send_email(list, args.image)
 
   # modules.get_hash(r"C:\Users\larub\OneDrive\Escritorio\English\Session2.pdf") # Incluir 'r' antes de la cadena para que funcione
 

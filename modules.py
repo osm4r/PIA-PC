@@ -60,12 +60,12 @@ def get_metadata(dirs, name):
   return list_dir_image
 
 # Funcion para mandar correo con metadatos
-def send_email(list_dir_image):
+def send_email(list_dir_image, name):
   sender_email = "patricia.hernandezca@uanl.edu.mx"
   receiver_email = "osmarfishy@gmail.com"
   password = getpass.getpass()
-  subject = "Metadata"
-  text = "Metadata files"
+  subject = name
+  text = f"{name} metadata files"
   message = MIMEMultipart()
   message["From"] = sender_email
   message["To"] = receiver_email
