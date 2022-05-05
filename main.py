@@ -47,7 +47,10 @@ def main():
   
   dirs_images = modules.list_images(args.image)
   list = modules.get_metadata(dirs_images, args.image)
-  # modules.send_email(list)
+  if len(list) == 0:
+    print("No se encontraron metadatos en las imagenes")
+  else:
+    modules.send_email(list)
 
   # modules.get_hash(r"C:\Users\larub\OneDrive\Escritorio\English\Session2.pdf") # Incluir 'r' antes de la cadena para que funcione
 

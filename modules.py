@@ -63,7 +63,7 @@ def get_metadata(dirs, name):
 def send_email(list_dir_image):
   sender_email = "patricia.hernandezca@uanl.edu.mx"
   receiver_email = "osmarfishy@gmail.com"
-  password = "5iypoyBB"
+  password = getpass.getpass()
   subject = "Metadata"
   text = "Metadata files"
   message = MIMEMultipart()
