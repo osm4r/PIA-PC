@@ -18,14 +18,6 @@ def download_bing_image(name):
   adult_filter_off=True, force_replace=False, timeout=60)
   os.rename(f"data/{name}/{name}", f"data/{name}/images")
 
-# Funcion para descargar imagen por url en específico
-def download_image_by_url(url):
-  response = requests.get(url)
-  with open("imagen.jpg","wb")as file:
-    for ima in response.iter_content(chunk_size=50000):
-      file.write(ima)
-    print("Se descargo correctamente la imagen")
-
 def list_images(name):
   files_list = os.listdir(f"data/{name}/images")
   dirs = []

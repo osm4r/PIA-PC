@@ -1,6 +1,7 @@
 import argparse
 from argparse import RawTextHelpFormatter
 import modules
+import virustotal
 import Cifrado
 # import KeyLogger
 from WebScrapping import WebScrappingProgram
@@ -37,15 +38,17 @@ def main():
   parser.add_argument("-url", dest="url", type=str, help="URL para descargar la imagen", required=False)
 
   parser.add_argument('-hv', '--hash', required=False, help='Ubicacion de archivo(s) o carpeta solicitar valores hash')
-  # URL MESSI http://c.files.bbci.co.uk/14554/production/_114248238_messi-pa.jpg
+
+  parser.add_argument('-vt', '--virustotal', required=False, help='URL de pagina web a escanear con Virus Total')
+
+  parser.add_argument('-key', '--apikey', required=False, help='api-key de la pagina virus total')
+
 
   args = parser.parse_args()
-  print(args)
+  # print(args)
 
   '''print("Busqueda:", args.image)
   modules.download_bing_image(args.image)
-  if args.url is not None:
-    modules.download_image_by_url(args.url)
   
   dirs_images = modules.list_images(args.image)
   list = modules.get_metadata(dirs_images, args.image)
@@ -71,9 +74,16 @@ def main():
   if args.desencriptar:
     Cifrado.Desencriptar(args.desencriptar)
 
+  if args.apikey:
+    if args.virustotal:
+      virustotal.scan_image(args.virustotal, args.apikey)
+    else:
+      print("El parametro '-vt' con el URL es necesario")
+      exit()
+
+
   '''if args.keylogger:
     KeyLogger.StartKeyLogger()'''
-
 
 if __name__ == '__main__':
   main()
