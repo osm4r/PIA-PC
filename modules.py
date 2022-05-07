@@ -74,6 +74,7 @@ def send_email(list_dir_image, name, email1, pswd, email2):
   message["Subject"] = subject
   message.attach(MIMEText(text, "plain"))
   
+  # Se adjunta cada archivo a enviar
   for file in list_dir_image:
     archivo_adjunto = open(file, "rb")
     adjunto_MIME = MIMEBase ("application", "octet-stream")
@@ -87,10 +88,11 @@ def send_email(list_dir_image, name, email1, pswd, email2):
     server.login(sender_email, password)
     server.sendmail(sender_email, receiver_email, message.as_string())
 
-# Funcion para obtener el valor hash de uno o mas archivos o incluso una carpeta (MEDIANTE POWERSHELL)
+# Funcion para obtener el valor hash de todos los archivos del proyecto (MEDIANTE POWERSHELL)
 def get_hash(list_folders):
   try:
     data = []
+    # Se obtiene le valor hash de cada archivo
     for filepath in list_folders:
       lineaPS = r"powershell -Executionpolicy Bypass -File .\getHash.ps1 -TargetFolder " + str(filepath)
       runningProcesses = subprocess.check_output(lineaPS)
@@ -98,6 +100,7 @@ def get_hash(list_folders):
       text = text.replace("\r", "")
       data.append(text)
 
+    # Se guardan los valores hash en un documento de texto
     with open("hash_data.txt", "w") as file:
       for hash in data:
         file.write(hash + "\n")
@@ -106,6 +109,7 @@ def get_hash(list_folders):
   except Exception as e:
     print("Error: ", e)
 
+# Guarda las ubicaciones de las carpetas/archivos a obtener su valor hash en una lista
 def list_folder():
   folders = []
   folders.append(os.getcwd())

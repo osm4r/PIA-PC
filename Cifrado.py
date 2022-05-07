@@ -13,28 +13,28 @@ abc = {
         'z': 'd'
     }
 
-
-def cifrar(Frase):
-    FraseEnc = '' #str vacio
-    for letra in Frase: #recorro Frase letra por letra
+# Funcion para cifrar una cadena
+def cifrar(frase):
+    cadena_cifrada = ''
+    for letra in frase:
         encontrado = False
         for x,y in abc.items():
             if letra == x:
-                FraseEnc += y #fraseEnc.append(y)
+                cadena_cifrada += y
                 encontrado = True
-        if not encontrado: #if encontrado == False
-                            # if encontrado != True
-            FraseEnc += letra
-    print("Cadena encriptada: ", FraseEnc)
+        if not encontrado:
+            cadena_cifrada += letra
+    print("Cadena encriptada: ", cadena_cifrada)
 
-def descifrar(Frase):
-    FraseDes = ''
-    for letra in Frase:
+# Funcion para descifrar una cadena
+def descifrar(frase):
+    cadena_descifrada = ''
+    for letra in frase:
         encontrado = False
         for x,y in abc.items():
             if letra == y:
-                FraseDes += x #fraseEnc.append(x)
+                cadena_descifrada += x
                 encontrado = True
-        if not encontrado: #if encontrado == False
-            FraseDes += letra
-    print("Cadena desencriptada: ", FraseDes)
+        if not encontrado:
+            cadena_descifrada += letra
+    print("Cadena desencriptada: ", cadena_descifrada)

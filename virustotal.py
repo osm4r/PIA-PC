@@ -2,9 +2,8 @@ import os
 import base64
 import json
 import requests
-import pprint
 
-# Funcion para escanear url
+# Funcion para escanear una URL en específico
 def scan_image(link, key):
     id = base64.urlsafe_b64encode(link.encode()).decode().strip("=")
     url = f"https://www.virustotal.com/api/v3/urls/{id}"
@@ -16,10 +15,12 @@ def scan_image(link, key):
 
     response = requests.request("GET", url, headers=headers)
 
+    # Manda un error si la api-key no es valida
     if response.status_code == 401:
         print("\nInserte una API-KEY válida")
         exit()
 
+    # Manda un error si la pagina web no es valida
     if response.status_code == 404:
         print("Error al tratar de analizar la página: ", link)
         exit()
@@ -27,6 +28,7 @@ def scan_image(link, key):
     inf_resp = json.loads(response.text)
     print("Análisis correcto de: ", link.strip())
 
+    # Si no existe la carpeta "escaneos" se crea
     if not os.path.exists('escaneos'):
         os.makedirs('escaneos')
 
@@ -41,4 +43,3 @@ def scan_image(link, key):
                 break
     except Exception as e:
         print(e)
-    # pprint.pprint(inf_resp)
