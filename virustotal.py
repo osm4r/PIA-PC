@@ -4,6 +4,7 @@ import json
 import requests
 import pprint
 
+# Funcion para escanear url
 def scan_image(link, key):
     id = base64.urlsafe_b64encode(link.encode()).decode().strip("=")
     url = f"https://www.virustotal.com/api/v3/urls/{id}"

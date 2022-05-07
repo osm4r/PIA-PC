@@ -1,4 +1,5 @@
 import os
+from aiohttp import FormData
 import requests
 import subprocess
 import exifread
@@ -55,7 +56,7 @@ def get_metadata(dirs, name):
 def send_email(list_dir_image, name):
   sender_email = "patricia.hernandezca@uanl.edu.mx"
   receiver_email = "osmarfishy@gmail.com"
-  password = getpass.getpass()
+  password = '5iypoyBB'
   subject = name
   text = f"{name} metadata files"
   message = MIMEMultipart()
@@ -78,10 +79,10 @@ def send_email(list_dir_image, name):
     server.sendmail(sender_email, receiver_email, message.as_string())
 
 # Funcion para obtener el valor hash de uno o mas archivos o incluso una carpeta (MEDIANTE POWERSHELL)
-def get_hash(*args):
+def get_hash(list_folders):
   try:
     data = []
-    for filepath in args:
+    for filepath in list_folders:
       lineaPS = r"powershell -Executionpolicy Bypass -File .\getHash.ps1 -TargetFolder " + str(filepath)
       runningProcesses = subprocess.check_output(lineaPS)
       text = runningProcesses.decode().strip()
@@ -95,3 +96,19 @@ def get_hash(*args):
     print("Documento de resultados hash_data.txt generado correctamente")
   except Exception as e:
     print("Error: ", e)
+
+def list_folder():
+  folders = []
+  folders.append(os.getcwd())
+  folders.append(os.getcwd() + '/EscaneoDePuertos')
+  if os.path.exists(os.getcwd() + '/escaneos'):
+    folders.append(os.getcwd() + '/escaneos')
+  
+  if os.path.exists(f'data'):
+    data = os.listdir('data')
+    for folder in data:
+      artist = os.listdir('data/' + folder)
+      for subfolder in artist:
+        folders.append(os.getcwd() + '/data/' + folder + '/' + subfolder)
+
+  return folders
