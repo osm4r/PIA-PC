@@ -1,74 +1,87 @@
 import argparse
 from argparse import RawTextHelpFormatter
-import modules
-import virustotal
-import Cifrado
-from EscaneoDePuertos import EscaneosDePuertos
+import os
+
+try: 
+  import modules
+  import virustotal
+  import Cifrado
+  import EscaneosDePuertos
+except ImportError:
+  os.system("pip install -r requirements.txt")
+  print("Instalando librerias necesarias... Ejecute de nuevo")
+  exit()
 
 
+
+
+# Funcion principal
 def main():
-  '''print("-----------------------------------------")
-  print(" Bienvenido al sistema de ciberseguridad\n"
-        "")
-  print("-----------------------------------------")'''
-
+  # asd
   parser = argparse.ArgumentParser(description='Guia de uso de argumentos',
                                     formatter_class=RawTextHelpFormatter)
 
+  # Se crean todos los argumentos funcionables del script
   parser.add_argument('-pS', '--portscan', required=False,
                       help='Dirección ip a escanear. Ej. python main.py -pS "[Direccion IP]"', action='store')
 
-  parser.add_argument('-E', '--encriptar', required=False,
-                      help='Encriptar un texto. Ej. python main.py -E "[texto plano]"', action='store')
+  parser.add_argument('-c', '--cifrar', required=False,
+                      help='Cifrado de un texto. Ej. python main.py -E "[texto plano]"', action='store')
 
-  parser.add_argument('-D', '--desencriptar', required=False,
-                      help='Desencriptar un texto. Ej. python main.py -D "[texto encriptado]"', action='store')
-
-  '''parser.add_argument('-k', '--keylogger', required=False,
-                      help='Iniciar el Keylogger. Ej. python main.py -k\nPara finalizar presionar "ctrl + c"',
-                      action='store_true')'''
+  parser.add_argument('-d', '--descifrar', required=False,
+                      help='Descifrado de un texto. Ej. python main.py -D "[texto encriptado]"', action='store')
 
   parser.add_argument("-i"  , "--image", type=str, help="Nombre a buscar en bing para descargar las imagenes")
 
-  parser.add_argument("-url", dest="url", type=str, help="URL para descargar la imagen", required=False)
+  parser.add_argument("-cant"  , "--cantidad", type=int, help="Cantidad de imagenes a descargar. default = 5")
 
-  parser.add_argument('-hv', '--hash', required=False, help='Ubicacion de archivo(s) o carpeta solicitar valores hash')
+  parser.add_argument("-e1"  , "--email1", type=str, help="Correo destinatario a enviar metadatos")
+  
+  parser.add_argument("-pass"  , "--password", type=str, help="Contraseña de correo destinatario")
+
+  parser.add_argument("-e2"  , "--email2", type=str, help="Correo remitente a enviar metadatos")
 
   parser.add_argument('-vt', '--virustotal', required=False, help='URL de pagina web a escanear con Virus Total')
 
   parser.add_argument('-key', '--apikey', required=False, help='api-key de la pagina virus total')
 
-
+  # Se define la variable con los argumentos que podrían ser utilizados con argparse
   args = parser.parse_args()
   # print(args)
 
+  # Se descargan imagenes y obtienen sus metadatos mediante el "artista" recibido por el parametro image
   if args.image:
     print("Busqueda:", args.image)
-    modules.download_bing_image(args.image)
+
+    if args.cantidad:
+      modules.download_bing_image(args.image, args.cantidad)
+    else:
+      modules.download_bing_image(args.image, 5)
     
     dirs_images = modules.list_images(args.image)
     list = modules.get_metadata(dirs_images, args.image)
+
     if len(list) == 0:
       print("No se encontraron metadatos en las imagenes")
       print("No se enviara el correo")
-
     else:
-      modules.send_email(list, args.image)
+      # Se mandan los metadatos por correo (opcional) solo si se reciben los 3 parámetros: email1, password y email2
+      if args.email1 and args.password and args.email2:
+        modules.send_email(list, args.image, args.email1, args.password, args.email2)
 
-  # modules.get_hash(r"C:\Users\larub\OneDrive\Escritorio\English\Session2.pdf") # Incluir 'r' antes de la cadena para que funcione
-
-  if args.hash:
-    modules.get_hash(args.hash)
-
+  # Se realiza un escaneo de puertos a la direccion ip recibida por medio del parametro portscan
   if args.portscan:
     EscaneosDePuertos.ShootYourShot(args.portscan)
 
-  if args.encriptar:
-    Cifrado.Encriptar(args.encriptar)
+  # Se realiza el cifrado de una cadena que es recibida mediante el parametro cifrar
+  if args.cifrar:
+    Cifrado.cifrar(args.cifrar)
 
-  if args.desencriptar:
-    Cifrado.Desencriptar(args.desencriptar)
+  # Se realiza el descifrado de una cadena que es recibida mediante el parametro descifrar
+  if args.descifrar:
+    Cifrado.descifrar(args.descifrar)
 
+  # Se valida que se reciban los parametros virustotal y apikey para realizar un escaneo de un URL en específico
   if args.apikey:
     if args.virustotal:
       virustotal.scan_image(args.virustotal, args.apikey)
@@ -76,6 +89,7 @@ def main():
       print("El parametro '-vt' con el URL es necesario")
       exit()
 
+  # Se valida que se reciban los parametros virustotal y apikey para realizar un escaneo de un URL en específico
   if args.virustotal:
     if args.apikey:
       virustotal.scan_image(args.virustotal, args.apikey)
@@ -83,9 +97,9 @@ def main():
       print("El parametro '-key' con el api-key de Virus Total es necesario")
       exit()
 
+  # Se obtienen los valores hash de todos los archivos del proyecto
   modules.get_hash(modules.list_folder())
-  '''if args.keylogger:
-    KeyLogger.StartKeyLogger()'''
 
+# Metodo principal
 if __name__ == '__main__':
   main()

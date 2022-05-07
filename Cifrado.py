@@ -14,7 +14,7 @@ abc = {
     }
 
 
-def Encriptar(Frase):
+def cifrar(Frase):
     FraseEnc = '' #str vacio
     for letra in Frase: #recorro Frase letra por letra
         encontrado = False
@@ -27,7 +27,7 @@ def Encriptar(Frase):
             FraseEnc += letra
     print("Cadena encriptada: ", FraseEnc)
 
-def Desencriptar(Frase):
+def descifrar(Frase):
     FraseDes = ''
     for letra in Frase:
         encontrado = False

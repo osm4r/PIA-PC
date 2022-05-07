@@ -1,6 +1,4 @@
 import os
-from aiohttp import FormData
-import requests
 import subprocess
 import exifread
 import smtplib
@@ -8,17 +6,25 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email import encoders
-import getpass
 from bing_image_downloader import downloader
 
 # Funcion para descargar una imagen sobre algun tema/persona por medio de bing
-def download_bing_image(name):
+def download_bing_image(name, cant):
+  if cant > 99:
+    print("Cantidad exhorbitante. Utilizando valor por default (5)")
+    cant = 5
+
+  # Si no existe la carpeta "data" se crea
   if not os.path.exists('data'):
     os.makedirs('data')
-  downloader.download(name, limit=5,  output_dir=f"data/{name}", 
+  
+  # Se descargan las imagenes del "artista" solicitado
+  downloader.download(name, limit=cant,  output_dir=f"data/{name}", 
   adult_filter_off=True, force_replace=False, timeout=60)
   os.rename(f"data/{name}/{name}", f"data/{name}/images")
 
+# Guarda las ubicaciones de las imagenes descargadas en una lista.
+# Esta lista se utiliza para obtener los metadatos de las imagenes
 def list_images(name):
   files_list = os.listdir(f"data/{name}/images")
   dirs = []
@@ -29,22 +35,25 @@ def list_images(name):
 
 # Funcion para obtener metadatos de las imágenes descargadas
 def get_metadata(dirs, name):
+  # Si no existe la carpeta "metadata" se crea
   if not os.path.exists(f'data/{name}/metadata'):
     os.makedirs(f'data/{name}/metadata')
 
   list_dir_image = []
+
+  # Se obtienen los metadatos de cada imagen descargada y
+  # se guardan en un archivo de texto por imagen
   for dir in range(len(dirs)):
     imagen = open(dirs[dir], 'rb')
     # Obtiene valores exif de imagen
     valores_exif = exifread.process_file(imagen)
 
-    # Imprimir valores de la imagen
-    print(len(valores_exif))
+    # Si la imagen no tiene metadatos no se crea el archivo
     if len(valores_exif) == 0:
       print(f"la imagen {dirs[dir]} no tiene metadatos")
       continue
-    # print(valores_exif)
     
+    # Se crea el archivo de texto
     with open(f"data/{name}/metadata/Image_{dir+1}.txt", "a") as file:
       list_dir_image.append(f"data/{name}/metadata/Image_{dir+1}.txt")
       for tag in valores_exif.keys():
@@ -53,10 +62,10 @@ def get_metadata(dirs, name):
   return list_dir_image
 
 # Funcion para mandar correo con metadatos
-def send_email(list_dir_image, name):
-  sender_email = "patricia.hernandezca@uanl.edu.mx"
-  receiver_email = "osmarfishy@gmail.com"
-  password = '5iypoyBB'
+def send_email(list_dir_image, name, email1, pswd, email2):
+  sender_email = email1
+  receiver_email = email2
+  password = pswd
   subject = name
   text = f"{name} metadata files"
   message = MIMEMultipart()
@@ -100,7 +109,6 @@ def get_hash(list_folders):
 def list_folder():
   folders = []
   folders.append(os.getcwd())
-  folders.append(os.getcwd() + '/EscaneoDePuertos')
   if os.path.exists(os.getcwd() + '/escaneos'):
     folders.append(os.getcwd() + '/escaneos')
   
