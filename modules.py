@@ -120,7 +120,8 @@ def send_email(list_dir_image, name, email1, pswd, email2):
       adjunto_MIME.set_payload(archivo_adjunto.read())
       encoders.encode_base64(adjunto_MIME)
       adjunto_MIME.add_header("Content-Disposition", "attachment; filename = {0}".format(os.path.basename(file)))
-      message.attach(adjunto_MIME) 
+      message.attach(adjunto_MIME)
+      
     with smtplib.SMTP('smtp.office365.com', 587) as server:
       server.ehlo
       server.starttls()
@@ -131,6 +132,22 @@ def send_email(list_dir_image, name, email1, pswd, email2):
     logging.info("Se enviaron los archivos de metadatos al correo "+ email2)
   except Exception as e:
     logging.warning(e)
+
+# Guarda las ubicaciones de las carpetas/archivos a obtener su valor hash en una lista
+def list_folder():
+  folders = []
+  folders.append(os.getcwd())
+  if os.path.exists(os.getcwd() + '/escaneos'):
+    folders.append(os.getcwd() + '/escaneos')
+  
+  if os.path.exists(f'data'):
+    data = os.listdir('data')
+    for folder in data:
+      artist = os.listdir('data/' + folder)
+      for subfolder in artist:
+        folders.append(os.getcwd() + '/data/' + folder + '/' + subfolder)
+
+  return folders
 
 # Funcion para obtener el valor hash de todos los archivos del proyecto (MEDIANTE POWERSHELL)
 def get_hash(list_folders):
@@ -154,19 +171,3 @@ def get_hash(list_folders):
   except Exception as e:
     print(e)
     logging.error(e)
-
-# Guarda las ubicaciones de las carpetas/archivos a obtener su valor hash en una lista
-def list_folder():
-  folders = []
-  folders.append(os.getcwd())
-  if os.path.exists(os.getcwd() + '/escaneos'):
-    folders.append(os.getcwd() + '/escaneos')
-  
-  if os.path.exists(f'data'):
-    data = os.listdir('data')
-    for folder in data:
-      artist = os.listdir('data/' + folder)
-      for subfolder in artist:
-        folders.append(os.getcwd() + '/data/' + folder + '/' + subfolder)
-
-  return folders

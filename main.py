@@ -84,6 +84,14 @@ def main():
       print("El parametro '-abc' con archivo json es necesario")
       exit()
 
+  # Se valida que haya cadena a cifrar o descifrar si se utiliza el parametro alfabeto
+  if args.alfabeto:
+    if not args.cifrar and not args.descifrar:
+      print("El parametro '-c' con la cadena a cifrar es necesario")
+      print("o")
+      print("El parametro '-d' con la cadena cifrada es necesario")
+      exit()   
+
   # Se valida que se reciban los parametros virustotal y apikey para realizar un escaneo de un URL en específico
   if args.virustotal:
     if not args.apikey:
