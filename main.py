@@ -5,8 +5,8 @@ import os
 try: 
   import modules
   import virustotal
-  import Cifrado
-  import EscaneosDePuertos
+  import cifrado
+  import portscan
 except ImportError:
   os.system("pip install -r requirements.txt")
   print("Instalando librerias necesarias... Ejecute de nuevo")
@@ -66,12 +66,12 @@ def main():
 
   # Se realiza un escaneo de puertos a la direccion ip recibida por medio del parametro portscan
   if args.portscan:
-    EscaneosDePuertos.ShootYourShot(args.portscan)
+    portscan.ShootYourShot(args.portscan)
 
   # Se realiza el cifrado de una cadena que es recibida mediante el parametro cifrar
   if args.cifrar:
     if args.alfabeto:
-      Cifrado.cifrar(args.cifrar, args.alfabeto)
+      cifrado.cifrar(args.cifrar, args.alfabeto)
     else:
       print("El parametro '-abc' con archivo json es necesario")
       exit()
@@ -79,7 +79,7 @@ def main():
   # Se realiza el descifrado de una cadena que es recibida mediante el parametro descifrar
   if args.descifrar:
     if args.alfabeto:
-      Cifrado.descifrar(args.descifrar, args.alfabeto)
+      cifrado.descifrar(args.descifrar, args.alfabeto)
     else:
       print("El parametro '-abc' con archivo json es necesario")
       exit()

@@ -1,7 +1,14 @@
 # This script runs on Python 3
-import socket, threading
+import os
+import socket
+import threading
 import logging
 
+if not os.path.exists('logs'):
+  os.makedirs('logs')
+logging.basicConfig(filename="logs/reporte.log", filemode="a",
+                    format='%(asctime)s-%(process)d-%(levelname)s-%(message)s',
+                    level= logging.INFO)
 
 def TCP_connect(ip, port_number, delay, output):
     TCPsock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -34,10 +41,14 @@ def scan_ports(Host_ip, delay):
     # Printing listening ports from small to large
     for i in range(10000):
         if output[i] == 'Listening':
-            print(str(i) + ': ' + output[i])
+            print(str(i) + ' : ' + output[i])
+            logging.info(str(i) + ' : ' + output[i])
 
 
 def ShootYourShot(Host_ip):
     # delay = int(input("How many seconds the socket is going to wait until timeout: "))
     logging.info("Escaneando...")
-    scan_ports(Host_ip, delay=15)
+    try:
+        scan_ports(Host_ip, delay=15)
+    except Exception as e:
+        logging.error(e)
