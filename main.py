@@ -12,9 +12,6 @@ except ImportError:
   print("Instalando librerias necesarias... Ejecute de nuevo")
   exit()
 
-
-
-
 # Funcion principal
 def main():
   # asd
