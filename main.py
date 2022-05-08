@@ -60,13 +60,9 @@ def main():
     dirs_images = modules.list_images(args.image)
     list = modules.get_metadata(dirs_images, args.image)
 
-    if len(list) == 0:
-      print("No se encontraron metadatos en las imagenes")
-      print("No se enviara el correo")
-    else:
-      # Se mandan los metadatos por correo (opcional) solo si se reciben los 3 parámetros: email1, password y email2
-      if args.email1 and args.password and args.email2:
-        modules.send_email(list, args.image, args.email1, args.password, args.email2)
+    # Se mandan los metadatos por correo (opcional) solo si se reciben los 3 parámetros: email1, password y email2
+    if len(list) != 0 and args.email1 and args.password and args.email2:
+      modules.send_email(list, args.image, args.email1, args.password, args.email2)
 
   # Se realiza un escaneo de puertos a la direccion ip recibida por medio del parametro portscan
   if args.portscan:
@@ -89,19 +85,17 @@ def main():
       exit()
 
   # Se valida que se reciban los parametros virustotal y apikey para realizar un escaneo de un URL en específico
+  if args.virustotal:
+    if not args.apikey:
+      print("El parametro '-key' con el api-key de Virus Total es necesario")
+      exit()
+
+  # Se valida que se reciban los parametros virustotal y apikey para realizar un escaneo de un URL en específico
   if args.apikey:
     if args.virustotal:
       virustotal.scan_image(args.virustotal, args.apikey)
     else:
       print("El parametro '-vt' con el URL es necesario")
-      exit()
-
-  # Se valida que se reciban los parametros virustotal y apikey para realizar un escaneo de un URL en específico
-  if args.virustotal:
-    if args.apikey:
-      virustotal.scan_image(args.virustotal, args.apikey)
-    else:
-      print("El parametro '-key' con el api-key de Virus Total es necesario")
       exit()
 
   # Se obtienen los valores hash de todos los archivos del proyecto

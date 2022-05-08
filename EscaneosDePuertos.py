@@ -37,7 +37,6 @@ def scan_ports(Host_ip, delay):
             print(str(i) + ': ' + output[i])
 
 
-
 def ShootYourShot(Host_ip):
     # delay = int(input("How many seconds the socket is going to wait until timeout: "))
     logging.info("Escaneando...")
