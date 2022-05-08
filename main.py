@@ -1,6 +1,7 @@
 import argparse
 from argparse import RawTextHelpFormatter
 import os
+import logging
 
 try: 
   import modules
@@ -46,7 +47,7 @@ def main():
 
   # Se define la variable con los argumentos que podrían ser utilizados con argparse
   args = parser.parse_args()
-  # print(args)
+
 
   # Se descargan imagenes y obtienen sus metadatos mediante el "artista" recibido por el parametro image
   if args.image:
@@ -67,6 +68,8 @@ def main():
       # Se mandan los metadatos por correo (opcional) solo si se reciben los 3 parámetros: email1, password y email2
       if args.email1 and args.password and args.email2:
         modules.send_email(list, args.image, args.email1, args.password, args.email2)
+    
+    
 
   # Se realiza un escaneo de puertos a la direccion ip recibida por medio del parametro portscan
   if args.portscan:
@@ -106,6 +109,10 @@ def main():
 
   # Se obtienen los valores hash de todos los archivos del proyecto
   modules.get_hash(modules.list_folder())
+  """
+  fuente="reporte.log"
+  destino="data/"+ args.image + "/reporte.log"
+  os.rename(fuente, destino)"""
 
 # Metodo principal
 if __name__ == '__main__':

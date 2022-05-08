@@ -1,0 +1,15 @@
+2022-05-07 21:15:44,380-31068-INFO-Inicia busqueda de imagenes
+2022-05-07 21:15:44,381-31068-INFO-Imagenes descargadas
+2022-05-07 21:15:44,382-31068-INFO-Se crea la carpeta metadata
+2022-05-07 21:15:44,382-31068-INFO-Se obtienen los metadatos de data/neymar/images/Image_1.jpg
+2022-05-07 21:15:44,382-31068-WARNING-No se obtuvieron los metadatos de data/neymar/images/Image_1.jpg
+2022-05-07 21:15:44,383-31068-INFO-Se obtienen los metadatos de data/neymar/images/Image_2.jpg
+2022-05-07 21:15:44,383-31068-WARNING-No se obtuvieron los metadatos de data/neymar/images/Image_2.jpg
+2022-05-07 21:15:44,383-31068-INFO-Se obtienen los metadatos de data/neymar/images/Image_3.jpg
+2022-05-07 21:15:44,384-31068-WARNING-No se obtuvieron los metadatos de data/neymar/images/Image_3.jpg
+2022-05-07 21:15:44,385-31068-INFO-Se obtienen los metadatos de data/neymar/images/Image_4.jpg
+2022-05-07 21:15:44,385-31068-WARNING-No se obtuvieron los metadatos de data/neymar/images/Image_4.jpg
+2022-05-07 21:15:44,385-31068-INFO-Se obtienen los metadatos de data/neymar/images/Image_5.jpg
+2022-05-07 21:15:44,385-31068-WARNING-No se obtuvieron los metadatos de data/neymar/images/Image_5.jpg
+2022-05-07 21:15:44,386-31068-INFO-Se obtienen los metadatos de data/neymar/images/Image_6.jpg
+2022-05-07 21:15:44,386-31068-WARNING-No se obtuvieron los metadatos de data/neymar/images/Image_6.jpg
