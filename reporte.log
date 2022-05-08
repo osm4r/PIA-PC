@@ -31,3 +31,19 @@
 2022-05-08 11:54:39,716-16536-INFO-Se obtienen los metadatos de data/neymar/images/Image_5.jpg
 2022-05-08 11:54:39,717-16536-WARNING-No se obtuvieron los metadatos de data/neymar/images/Image_5.jpg
 2022-05-08 11:54:42,492-16536-INFO-Se enviaron los archivos de metadatos al correo patricia.hernandezca@uanl.edu.mx
+2022-05-08 11:58:16,622-9668-INFO-
+2022-05-08 11:58:16,622-9668-INFO-Inicia busqueda de imagenes cr7
+2022-05-08 11:58:16,622-9668-INFO-Imagenes descargadas
+2022-05-08 11:58:16,622-9668-WARNING-Ya existe la carpeta data
+2022-05-08 11:58:19,645-9668-INFO-Se crea la carpeta metadata
+2022-05-08 11:58:19,646-9668-INFO-Se obtienen los metadatos de data/cr7/images/Image_1.jpg
+2022-05-08 11:58:19,646-9668-WARNING-No se obtuvieron los metadatos de data/cr7/images/Image_1.jpg
+2022-05-08 11:58:19,647-9668-INFO-Se obtienen los metadatos de data/cr7/images/Image_2.jpg
+2022-05-08 11:58:19,647-9668-INFO-Se crea el archivo de metadatos Image_2.txt
+2022-05-08 11:58:19,648-9668-INFO-Se obtienen los metadatos de data/cr7/images/Image_3.jpg
+2022-05-08 11:58:19,648-9668-WARNING-No se obtuvieron los metadatos de data/cr7/images/Image_3.jpg
+2022-05-08 11:58:19,649-9668-INFO-Se obtienen los metadatos de data/cr7/images/Image_4.jpg
+2022-05-08 11:58:19,649-9668-WARNING-No se obtuvieron los metadatos de data/cr7/images/Image_4.jpg
+2022-05-08 11:58:19,650-9668-INFO-Se obtienen los metadatos de data/cr7/images/Image_5.jpg
+2022-05-08 11:58:19,650-9668-WARNING-No se obtuvieron los metadatos de data/cr7/images/Image_5.jpg
+2022-05-08 11:58:21,319-9668-INFO-Se enviaron los archivos de metadatos al correo patricia.hernandezca@uanl.edu.mx
