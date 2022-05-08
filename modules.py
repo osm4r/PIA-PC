@@ -16,24 +16,22 @@ def download_bing_image(name, cant):
   if cant > 99:
     print("Cantidad exhorbitante. Utilizando valor por default (5)")
     cant = 5
-  logging.basicConfig(filename="reporte.log", filemode="a", format='%(asctime)s-%(process)d-%(levelname)s-%(message)s', level= logging.INFO)
-  logging.info("")
-  logging.info("Inicia busqueda de imagenes "+ name)
-  logging.info("Imagenes descargadas")
 
   # Si no existe la carpeta "data" se crea
   if not os.path.exists('data'):
     os.makedirs('data')
-    logging.info("Se crea la carpeta data")
-  else:
-    logging.warning("Ya existe la carpeta data")
+    #logging.info("Se crea la carpeta data")
+  #else:
+    #logging.warning("Ya existe la carpeta data")
   
   # Se descargan las imagenes del "artista" solicitado
   downloader.download(name, limit=cant,  output_dir=f"data/{name}", 
   adult_filter_off=True, force_replace=False, timeout=60)
   os.rename(f"data/{name}/{name}", f"data/{name}/images")
   
-  
+  logging.basicConfig(filename=f"data/{name}"+"/reporte.log", filemode="w", format='%(asctime)s-%(process)d-%(levelname)s-%(message)s', level= logging.INFO)
+  logging.info("Inicia busqueda de imagenes")
+  logging.info("Imagenes descargadas")
 
 # Guarda las ubicaciones de las imagenes descargadas en una lista.
 # Esta lista se utiliza para obtener los metadatos de las imagenes
@@ -76,10 +74,6 @@ def get_metadata(dirs, name):
       logging.info("Se crea el archivo de metadatos "+ f"Image_{dir+1}.txt")
       for tag in valores_exif.keys():
         file.write(str(tag) + " : " + str(valores_exif[tag]) + "\n")
-
-  if len(list_dir_image)==0:
-    logging.warning("No se econtraron metadatos de las imagenes")
-    logging.warning("No se enviará el correo")
 
   return list_dir_image
 

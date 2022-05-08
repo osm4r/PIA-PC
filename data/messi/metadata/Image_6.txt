@@ -2,5 +2,5 @@ Image Software : Google
 Image YCbCrSubSampling : [2, 2]
 Image ExifOffset : 58
 EXIF ExifVersion : 0220
-EXIF ExifImageWidth : 1600
-EXIF ExifImageLength : 1067
+EXIF ExifImageWidth : 260
+EXIF ExifImageLength : 194
