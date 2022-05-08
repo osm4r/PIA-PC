@@ -1,20 +1,14 @@
-abc = {
-        'A': 'E', 'B': 'F', 'C': 'G', 'D': 'H', 'E': 'I',
-        'F': 'J', 'G': 'K', 'H': 'L', 'I': 'M', 'J': 'N',
-        'K': 'O', 'L': 'P', 'M': 'Q', 'N': 'R', 'O': 'S',
-        'P': 'T', 'Q': 'U', 'R': 'V', 'S': 'W', 'T': 'X',
-        'U': 'Y', 'V': 'Z', 'W': 'A', 'X': 'B', 'Y': 'C',
-        'Z': 'D', 
-        'a': 'e', 'b': 'f', 'c': 'g', 'd': 'h', 'e': 'i',
-        'f': 'j', 'g': 'k', 'h': 'l', 'i': 'm', 'j': 'n',
-        'k': 'o', 'l': 'p', 'm': 'q', 'n': 'r', 'o': 's',
-        'p': 't', 'q': 'u', 'r': 'v', 's': 'w', 't': 'x',
-        'u': 'y', 'v': 'z', 'w': 'a', 'x': 'b', 'y': 'c',
-        'z': 'd'
-    }
+import json
+
+# Funcion para obtener el alfabeto para cifrar mediante un archivo json
+def get_abc():
+    with open('alfabeto.json', 'r') as file:
+        abc = json.load(file)
+    return abc
 
 # Funcion para cifrar una cadena
 def cifrar(frase):
+    abc = get_abc()
     cadena_cifrada = ''
     for letra in frase:
         encontrado = False
@@ -28,6 +22,7 @@ def cifrar(frase):
 
 # Funcion para descifrar una cadena
 def descifrar(frase):
+    abc = get_abc()
     cadena_descifrada = ''
     for letra in frase:
         encontrado = False

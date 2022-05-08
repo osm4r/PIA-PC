@@ -14,9 +14,7 @@ def TCP_connect(ip, port_number, delay, output):
         output[port_number] = ''
 
 
-
 def scan_ports(Host_ip, delay):
-
     threads = []        # To run TCP_connect concurrently
     output = {}         # For printing purposes
 
@@ -44,5 +42,3 @@ def ShootYourShot(Host_ip):
     # delay = int(input("How many seconds the socket is going to wait until timeout: "))
     logging.info("Escaneando...")
     scan_ports(Host_ip, delay=15)
-
-# ShootYourShot("192.168.137.170")
