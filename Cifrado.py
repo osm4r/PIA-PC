@@ -1,14 +1,11 @@
 import json
 
-# Funcion para obtener el alfabeto para cifrar mediante un archivo json
-def get_abc():
-    with open('alfabeto.json', 'r') as file:
-        abc = json.load(file)
-    return abc
-
 # Funcion para cifrar una cadena
-def cifrar(frase):
-    abc = get_abc()
+def cifrar(frase, file):
+    # Se obtiene el alfabeto del archivo json recibido
+    with open(file, 'r') as file:
+        abc = json.load(file)
+
     cadena_cifrada = ''
     for letra in frase:
         encontrado = False
@@ -21,8 +18,10 @@ def cifrar(frase):
     print("Cadena encriptada: ", cadena_cifrada)
 
 # Funcion para descifrar una cadena
-def descifrar(frase):
-    abc = get_abc()
+def descifrar(frase, file):
+    with open(file, 'r') as file:
+        abc = json.load(file)
+
     cadena_descifrada = ''
     for letra in frase:
         encontrado = False

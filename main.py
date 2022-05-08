@@ -27,6 +27,8 @@ def main():
 
   parser.add_argument('-d', '--descifrar', required=False,
                       help='Descifrado de un texto. Ej. python main.py -D "[texto encriptado]"', action='store')
+  
+  parser.add_argument('-abc', '--alfabeto', type=str, help="Documento json con el alfabeto a utilizar con las llaves.")
 
   parser.add_argument("-i"  , "--image", type=str, help="Nombre a buscar en bing para descargar las imagenes")
 
@@ -72,11 +74,19 @@ def main():
 
   # Se realiza el cifrado de una cadena que es recibida mediante el parametro cifrar
   if args.cifrar:
-    Cifrado.cifrar(args.cifrar)
+    if args.alfabeto:
+      Cifrado.cifrar(args.cifrar, args.alfabeto)
+    else:
+      print("El parametro '-abc' con archivo json es necesario")
+      exit()
 
   # Se realiza el descifrado de una cadena que es recibida mediante el parametro descifrar
   if args.descifrar:
-    Cifrado.descifrar(args.descifrar)
+    if args.alfabeto:
+      Cifrado.descifrar(args.descifrar, args.alfabeto)
+    else:
+      print("El parametro '-abc' con archivo json es necesario")
+      exit()
 
   # Se valida que se reciban los parametros virustotal y apikey para realizar un escaneo de un URL en específico
   if args.apikey:
