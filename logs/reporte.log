@@ -1,0 +1,83 @@
+2022-05-09 09:34:52,099-30204-INFO-Se crea la carpeta escaneos
+2022-05-09 09:34:52,107-30204-INFO-Archivo escaneo_0.txt generado correctamente
+2022-05-09 09:34:54,199-30204-INFO-Documento de resultados hash_data.txt generado correctamente
+2022-05-09 09:34:58,582-19468-INFO-Ya existe la carpeta escaneos
+2022-05-09 09:34:58,590-19468-INFO-Archivo escaneo_1.txt generado correctamente
+2022-05-09 09:35:00,304-19468-INFO-Documento de resultados hash_data.txt generado correctamente
+2022-05-09 09:35:01,944-3140-INFO-Ya existe la carpeta escaneos
+2022-05-09 09:35:01,949-3140-INFO-Archivo escaneo_2.txt generado correctamente
+2022-05-09 09:35:03,605-3140-INFO-Documento de resultados hash_data.txt generado correctamente
+2022-05-09 09:35:04,903-50488-INFO-Ya existe la carpeta escaneos
+2022-05-09 09:35:04,918-50488-INFO-Archivo escaneo_3.txt generado correctamente
+2022-05-09 09:35:06,671-50488-INFO-Documento de resultados hash_data.txt generado correctamente
+2022-05-09 09:35:09,067-20616-INFO-Ya existe la carpeta escaneos
+2022-05-09 09:35:09,075-20616-INFO-Archivo escaneo_4.txt generado correctamente
+2022-05-09 09:35:10,767-20616-INFO-Documento de resultados hash_data.txt generado correctamente
+2022-05-09 09:35:12,547-63796-INFO-Ya existe la carpeta escaneos
+2022-05-09 09:35:12,547-63796-INFO-Archivo escaneo_5.txt generado correctamente
+2022-05-09 09:35:14,269-63796-INFO-Documento de resultados hash_data.txt generado correctamente
+2022-05-09 09:36:17,485-15276-INFO-Inicia busqueda de imagenes: cr7
+2022-05-09 09:36:17,485-15276-INFO-Se crea la carpeta data
+2022-05-09 09:36:21,025-15276-INFO-Imagenes descargadas exitosamente
+2022-05-09 09:36:21,033-15276-INFO-Se crea la carpeta metadata
+2022-05-09 09:36:21,033-15276-WARNING-No se obtuvieron los metadatos de Image_1.jpg
+2022-05-09 09:36:21,033-15276-WARNING-No se obtuvieron los metadatos de Image_2.jpg
+2022-05-09 09:36:21,033-15276-WARNING-No se obtuvieron los metadatos de Image_3.jpg
+2022-05-09 09:36:21,033-15276-WARNING-No se obtuvieron los metadatos de Image_4.jpg
+2022-05-09 09:36:21,041-15276-WARNING-No se obtuvieron los metadatos de Image_5.jpg
+2022-05-09 09:36:21,041-15276-WARNING-Ninguna imagen tiene metadatos
+2022-05-09 09:36:21,041-15276-WARNING-No se enviará el correo
+2022-05-09 09:36:23,786-15276-INFO-Documento de resultados hash_data.txt generado correctamente
+2022-05-09 09:36:30,500-10052-INFO-Inicia busqueda de imagenes: messi
+2022-05-09 09:36:30,500-10052-INFO-Ya existe la carpeta data
+2022-05-09 09:36:34,394-10052-INFO-Imagenes descargadas exitosamente
+2022-05-09 09:36:34,405-10052-INFO-Se crea la carpeta metadata
+2022-05-09 09:36:34,405-10052-INFO-Se crea el archivo de metadatos Image_1.txt
+2022-05-09 09:36:34,412-10052-INFO-Se crea el archivo de metadatos Image_2.txt
+2022-05-09 09:36:34,420-10052-INFO-Se crea el archivo de metadatos Image_3.txt
+2022-05-09 09:36:34,420-10052-INFO-Se crea el archivo de metadatos Image_4.txt
+2022-05-09 09:36:34,420-10052-WARNING-No se obtuvieron los metadatos de Image_5.jpg
+2022-05-09 09:36:39,042-10052-INFO-Documento de resultados hash_data.txt generado correctamente
+2022-05-09 09:36:48,517-64628-INFO-Inicia busqueda de imagenes: haland
+2022-05-09 09:36:48,517-64628-INFO-Ya existe la carpeta data
+2022-05-09 09:37:01,837-64628-INFO-Imagenes descargadas exitosamente
+2022-05-09 09:37:01,845-64628-INFO-Se crea la carpeta metadata
+2022-05-09 09:37:01,845-64628-WARNING-No se obtuvieron los metadatos de Image_1.jpg
+2022-05-09 09:37:01,848-64628-WARNING-No se obtuvieron los metadatos de Image_2.jpg
+2022-05-09 09:37:01,849-64628-WARNING-No se obtuvieron los metadatos de Image_3.jpg
+2022-05-09 09:37:01,850-64628-WARNING-No se obtuvieron los metadatos de Image_4.jpg
+2022-05-09 09:37:01,851-64628-WARNING-No se obtuvieron los metadatos de Image_5.jpg
+2022-05-09 09:37:01,852-64628-WARNING-Ninguna imagen tiene metadatos
+2022-05-09 09:37:01,852-64628-WARNING-No se enviará el correo
+2022-05-09 09:37:08,015-64628-INFO-Documento de resultados hash_data.txt generado correctamente
+2022-05-09 09:37:28,530-30248-INFO-Inicia busqueda de imagenes: cristiano ronaldo
+2022-05-09 09:37:28,530-30248-INFO-Ya existe la carpeta data
+2022-05-09 09:37:33,868-30248-INFO-Imagenes descargadas exitosamente
+2022-05-09 09:37:33,881-30248-INFO-Se crea la carpeta metadata
+2022-05-09 09:37:33,881-30248-WARNING-No se obtuvieron los metadatos de Image_1.jpg
+2022-05-09 09:37:33,881-30248-WARNING-No se obtuvieron los metadatos de Image_2.jpg
+2022-05-09 09:37:33,887-30248-WARNING-No se obtuvieron los metadatos de Image_3.jpg
+2022-05-09 09:37:33,887-30248-INFO-Se crea el archivo de metadatos Image_4.txt
+2022-05-09 09:37:33,887-30248-WARNING-No se obtuvieron los metadatos de Image_5.jpg
+2022-05-09 09:37:37,751-30248-ERROR-'utf-8' codec can't decode byte 0xa0 in position 205: invalid start byte
+2022-05-09 09:38:35,583-52400-INFO-Cadena descifrada: hola esto es una prueba
+2022-05-09 09:38:35,583-52400-INFO-Cadena cifrada: lspe iwxs iw yre tvyife
+2022-05-09 09:38:41,311-52400-INFO-Documento de resultados hash_data.txt generado correctamente
+2022-05-09 09:38:56,878-30816-INFO-Cadena descifrada: lspe iwxs iw yre tvyife
+2022-05-09 09:38:56,878-30816-INFO-Cadena cifrada: pwti mabw ma cvi xzcmji
+2022-05-09 09:39:02,961-30816-INFO-Documento de resultados hash_data.txt generado correctamente
+2022-05-09 09:39:08,956-30948-INFO-Cadena cifrada: lspe iwxs iw yre tvyife
+2022-05-09 09:39:08,956-30948-INFO-Cadena descifrada: hola esto es una prueba
+2022-05-09 09:39:14,546-30948-INFO-Documento de resultados hash_data.txt generado correctamente
+2022-05-09 09:39:47,362-35604-INFO-Escaneando...
+2022-05-09 09:39:58,550-35604-INFO-135 : Listening
+2022-05-09 09:39:58,550-35604-INFO-139 : Listening
+2022-05-09 09:39:58,550-35604-INFO-445 : Listening
+2022-05-09 09:39:58,550-35604-INFO-902 : Listening
+2022-05-09 09:39:58,550-35604-INFO-912 : Listening
+2022-05-09 09:39:58,550-35604-INFO-2942 : Listening
+2022-05-09 09:39:58,550-35604-INFO-5040 : Listening
+2022-05-09 09:39:58,550-35604-INFO-6646 : Listening
+2022-05-09 09:39:58,550-35604-INFO-9012 : Listening
+2022-05-09 09:39:58,550-35604-INFO-9013 : Listening
+2022-05-09 09:40:04,100-35604-INFO-Documento de resultados hash_data.txt generado correctamente
