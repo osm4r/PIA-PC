@@ -14,22 +14,10 @@ except ImportError:
 
 # Funcion principal
 def main():
-  # asd
   parser = argparse.ArgumentParser(description='Guia de uso de argumentos',
                                     formatter_class=RawTextHelpFormatter)
 
   # Se crean todos los argumentos funcionables del script
-  parser.add_argument('-pS', '--portscan', required=False,
-                      help='Dirección ip a escanear. Ej. python main.py -pS "[Direccion IP]"', action='store')
-
-  parser.add_argument('-c', '--cifrar', required=False,
-                      help='Cifrado de un texto. Ej. python main.py -E "[texto plano]"', action='store')
-
-  parser.add_argument('-d', '--descifrar', required=False,
-                      help='Descifrado de un texto. Ej. python main.py -D "[texto encriptado]"', action='store')
-  
-  parser.add_argument('-abc', '--alfabeto', type=str, help="Documento json con el alfabeto a utilizar con las llaves.")
-
   parser.add_argument("-i"  , "--image", type=str, help="Nombre a buscar en bing para descargar las imagenes")
 
   parser.add_argument("-cant"  , "--cantidad", type=int, help="Cantidad de imagenes a descargar. default = 5")
@@ -43,6 +31,17 @@ def main():
   parser.add_argument('-vt', '--virustotal', required=False, help='URL de pagina web a escanear con Virus Total')
 
   parser.add_argument('-key', '--apikey', required=False, help='api-key de la pagina virus total')
+
+  parser.add_argument('-ps', '--portscan', required=False,
+                      help='Dirección ip a escanear. Ej. python main.py -pS "[Direccion IP]"', action='store')
+
+  parser.add_argument('-c', '--cifrar', required=False,
+                      help='Cifrado de un texto. Ej. python main.py -E "[texto plano]"', action='store')
+
+  parser.add_argument('-d', '--descifrar', required=False,
+                      help='Descifrado de un texto. Ej. python main.py -D "[texto encriptado]"', action='store')
+  
+  parser.add_argument('-abc', '--alfabeto', type=str, help="Documento json con el alfabeto a utilizar con las llaves.")
 
   # Se define la variable con los argumentos que podrían ser utilizados con argparse
   args = parser.parse_args()
@@ -68,6 +67,14 @@ def main():
   if args.portscan:
     portscan.ShootYourShot(args.portscan)
 
+  # Se valida que haya cadena a cifrar o descifrar si se utiliza el parametro alfabeto
+  if args.alfabeto:
+    if not args.cifrar and not args.descifrar:
+      print("El parametro '-c' con la cadena a cifrar es necesario")
+      print("o")
+      print("El parametro '-d' con la cadena cifrada es necesario")
+      exit()   
+
   # Se realiza el cifrado de una cadena que es recibida mediante el parametro cifrar
   if args.cifrar:
     if args.alfabeto:
@@ -83,14 +90,6 @@ def main():
     else:
       print("El parametro '-abc' con archivo json es necesario")
       exit()
-
-  # Se valida que haya cadena a cifrar o descifrar si se utiliza el parametro alfabeto
-  if args.alfabeto:
-    if not args.cifrar and not args.descifrar:
-      print("El parametro '-c' con la cadena a cifrar es necesario")
-      print("o")
-      print("El parametro '-d' con la cadena cifrada es necesario")
-      exit()   
 
   # Se valida que se reciban los parametros virustotal y apikey para realizar un escaneo de un URL en específico
   if args.virustotal:
