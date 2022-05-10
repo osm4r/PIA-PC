@@ -3,7 +3,7 @@ from argparse import RawTextHelpFormatter
 import os
 
 try: 
-  import modules
+  import module
   import virustotal
   import cifrado
   import portscan
@@ -14,6 +14,14 @@ except ImportError:
 
 # Funcion principal
 def main():
+  """
+            Función principal.
+            
+            :Ejemplo:
+    
+            >>> main()        
+            """
+
   parser = argparse.ArgumentParser(description='Guia de uso de argumentos',
                                     formatter_class=RawTextHelpFormatter)
 
@@ -52,16 +60,16 @@ def main():
     print("Busqueda:", args.image)
 
     if args.cantidad:
-      modules.download_bing_image(args.image, args.cantidad)
+      module.download_bing_image(args.image, args.cantidad)
     else:
-      modules.download_bing_image(args.image, 5)
+      module.download_bing_image(args.image, 5)
     
-    dirs_images = modules.list_images(args.image)
-    list = modules.get_metadata(dirs_images, args.image)
+    dirs_images = module.list_images(args.image)
+    list = module.get_metadata(dirs_images, args.image)
 
     # Se mandan los metadatos por correo (opcional) solo si se reciben los 3 parámetros: email1, password y email2
     if len(list) != 0 and args.email1 and args.password and args.email2:
-      modules.send_email(list, args.image, args.email1, args.password, args.email2)
+      module.send_email(list, args.image, args.email1, args.password, args.email2)
 
   # Se realiza un escaneo de puertos a la direccion ip recibida por medio del parametro portscan
   if args.portscan:
@@ -106,7 +114,7 @@ def main():
       exit()
 
   # Se obtienen los valores hash de todos los archivos del proyecto
-  modules.get_hash(modules.list_folder())
+  module.get_hash(module.list_folder())
 
 # Metodo principal
 if __name__ == '__main__':

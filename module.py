@@ -18,6 +18,19 @@ logging.basicConfig(filename="logs/reporte.log", filemode="a",
 
 # Funcion para descargar una imagen sobre algun tema/persona por medio de bing
 def download_bing_image(name, cant):
+  """
+            Funcion para descargar una imagen sobre algun tema/persona por medio de bing.
+            
+            :Ejemplo:
+    
+            >>> download_bing_image('Messi', 15)        
+            
+            :param name: primer argumento
+            :type name: string
+            :param cant: segundo argumento
+            :type cant: int
+            """
+
   logging.info("Inicia busqueda de imagenes: "+ name)
   try:
     if cant > 99:
@@ -49,6 +62,18 @@ def download_bing_image(name, cant):
 # Guarda las ubicaciones de las imagenes descargadas en una lista.
 # Esta lista se utiliza para obtener los metadatos de las imagenes
 def list_images(name):
+  """
+            Guarda las ubicaciones de las imagenes descargadas en una lista.
+            Esta lista se utiliza para obtener los metadatos de las imagenes.
+            
+            :Ejemplo:
+    
+            >>> list_images('Messi')        
+            
+            :param name: primer argumento
+            :type name: string
+            """
+
   files_list = os.listdir(f"data/{name}/images")
   dirs = []
   for file in range(len(files_list)):
@@ -58,6 +83,19 @@ def list_images(name):
 
 # Funcion para obtener metadatos de las imágenes descargadas
 def get_metadata(dirs, name):
+  """
+            Funcion para obtener metadatos de las imágenes descargadas.
+            
+            :Ejemplo:
+    
+            >>> get_metadata(["data\Messi\images\Image_1.jpg"], 'Messi')        
+            
+            :param dirs: primer argumento
+            :type dirs: list
+            :param name: segundo argumento
+            :type name: string
+            """
+
   # Si no existe la carpeta "metadata" se crea
   if not os.path.exists(f'data/{name}/metadata'):
     os.makedirs(f'data/{name}/metadata')
@@ -101,6 +139,25 @@ def get_metadata(dirs, name):
 
 # Funcion para mandar correo con metadatos
 def send_email(list_dir_image, name, email1, pswd, email2):
+  """
+            Funcion para mandar correo con metadatos.
+            
+            :Ejemplo:
+    
+            >>> send_email(["data\Messi\metadata\Image_1.txt"], 'Messi', 'patricia@gmail.com', 'contraseña123', 'osmar@yahoo.com')        
+            
+            :param list_dir_image: primer argumento
+            :type list_dir_image: list
+            :param name: segundo argumento
+            :type name: string
+            :param email1: tercer argumento
+            :type email1: string
+            :param pswd: cuarto argumento
+            :type pswd: string
+            :param email2: quinto argumento
+            :type email2: string
+            """
+
   try:
     sender_email = email1
     receiver_email = email2
@@ -135,6 +192,14 @@ def send_email(list_dir_image, name, email1, pswd, email2):
 
 # Guarda las ubicaciones de las carpetas/archivos a obtener su valor hash en una lista
 def list_folder():
+  """
+            Guarda las ubicaciones de las carpetas/archivos a obtener su valor hash en una lista.
+            
+            :Ejemplo:
+    
+            >>> list_folder()        
+            """
+
   folders = []
   folders.append(os.getcwd())
   if os.path.exists(os.getcwd() + '/escaneos'):
@@ -151,6 +216,17 @@ def list_folder():
 
 # Funcion para obtener el valor hash de todos los archivos del proyecto (MEDIANTE POWERSHELL)
 def get_hash(list_folders):
+  """
+            Funcion para obtener el valor hash de todos los archivos del proyecto (MEDIANTE POWERSHELL).
+            
+            :Ejemplo:
+    
+            >>> get_hash(["escaneos", "data/Messi/images])        
+            
+            :param list_folders: primer argumento
+            :type list_folders: list
+            """
+
   try:
     data = []
     # Se obtiene le valor hash de cada archivo

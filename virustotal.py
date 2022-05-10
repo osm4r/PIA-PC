@@ -12,6 +12,19 @@ logging.basicConfig(filename="logs/reporte.log", filemode="a",
 
 # Funcion para escanear una URL en específico
 def scan_image(link, key):
+    """
+        Funcion para escanear una URL en específico.
+        
+        :Ejemplo:
+
+        >>> scan_image('www.patricia.com/tunometecabrasaramambiche', 'S123SHJQWJ3213SAWGKLVORE3242')        
+        
+        :param frase: primer argumento
+        :type frase: string
+        :param file: segundo argumento
+        :type file: string
+        """
+
     try:
         id = base64.urlsafe_b64encode(link.encode()).decode().strip("=")
         url = f"https://www.virustotal.com/api/v3/urls/{id}"

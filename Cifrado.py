@@ -10,6 +10,19 @@ logging.basicConfig(filename="logs/reporte.log", filemode="a",
 
 # Funcion para cifrar una cadena
 def cifrar(frase, file):
+    """
+        Funcion para cifrar una cadena.
+        
+        :Ejemplo:
+
+        >>> cifrar('Hola', 'alfabeto.json')        
+        
+        :param frase: primer argumento
+        :type frase: string
+        :param file: segundo argumento
+        :type file: string
+        """
+
     try:
         # Se obtiene el alfabeto del archivo json recibido
         with open(file, 'r') as file:
@@ -32,6 +45,19 @@ def cifrar(frase, file):
 
 # Funcion para descifrar una cadena
 def descifrar(frase, file):
+    """
+        Funcion para descifrar una cadena.
+        
+        :Ejemplo:
+
+        >>> descifrar('shealhjwd', 'alfabeto.json')        
+        
+        :param frase: primer argumento
+        :type frase: string
+        :param file: segundo argumento
+        :type file: string
+        """
+
     try:
         with open(file, 'r') as file:
             abc = json.load(file)
