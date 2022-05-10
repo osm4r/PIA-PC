@@ -1,0 +1,5 @@
+Image Orientation : Horizontal (normal)
+Image ExifOffset : 38
+EXIF ColorSpace : sRGB
+EXIF ExifImageWidth : 1358
+EXIF ExifImageLength : 1080

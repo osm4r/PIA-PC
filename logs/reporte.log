@@ -81,3 +81,35 @@
 2022-05-09 09:39:58,550-35604-INFO-9012 : Listening
 2022-05-09 09:39:58,550-35604-INFO-9013 : Listening
 2022-05-09 09:40:04,100-35604-INFO-Documento de resultados hash_data.txt generado correctamente
+2022-05-10 09:56:13,736-8872-INFO-Inicia busqueda de imagenes: baki
+2022-05-10 09:56:13,736-8872-INFO-Ya existe la carpeta data
+2022-05-10 09:56:22,100-8872-INFO-Imagenes descargadas exitosamente
+2022-05-10 09:56:22,100-8872-INFO-Se crea la carpeta metadata
+2022-05-10 09:56:22,112-8872-INFO-Se crea el archivo de metadatos Image_1.txt
+2022-05-10 09:56:22,116-8872-INFO-Se crea el archivo de metadatos Image_2.txt
+2022-05-10 09:56:22,116-8872-WARNING-No se obtuvieron los metadatos de Image_3.jpg
+2022-05-10 09:56:22,116-8872-WARNING-No se obtuvieron los metadatos de Image_4.jpg
+2022-05-10 09:56:22,116-8872-WARNING-No se obtuvieron los metadatos de Image_5.jpg
+2022-05-10 09:56:22,116-8872-WARNING-No se obtuvieron los metadatos de Image_6.jpg
+2022-05-10 09:56:22,124-8872-WARNING-No se obtuvieron los metadatos de Image_7.jpg
+2022-05-10 09:56:22,124-8872-WARNING-No se obtuvieron los metadatos de Image_8.jpg
+2022-05-10 09:56:22,124-8872-WARNING-No se obtuvieron los metadatos de Image_9.jpg
+2022-05-10 09:56:22,124-8872-WARNING-No se obtuvieron los metadatos de Image_10.jpg
+2022-05-10 09:56:31,958-8872-WARNING-(535, b'5.7.139 Authentication unsuccessful, the user credentials were incorrect. [SN4PR0501CA0022.namprd05.prod.outlook.com]')
+2022-05-10 09:56:39,627-8872-INFO-Documento de resultados hash_data.txt generado correctamente
+2022-05-10 09:57:58,253-27364-INFO-Inicia busqueda de imagenes: pokemon
+2022-05-10 09:57:58,253-27364-INFO-Ya existe la carpeta data
+2022-05-10 09:58:13,053-27364-INFO-Imagenes descargadas exitosamente
+2022-05-10 09:58:13,053-27364-INFO-Se crea la carpeta metadata
+2022-05-10 09:58:13,053-27364-WARNING-No se obtuvieron los metadatos de Image_1.jpg
+2022-05-10 09:58:13,053-27364-INFO-Se crea el archivo de metadatos Image_2.txt
+2022-05-10 09:58:13,061-27364-INFO-Se crea el archivo de metadatos Image_3.txt
+2022-05-10 09:58:13,061-27364-WARNING-No se obtuvieron los metadatos de Image_4.jpg
+2022-05-10 09:58:13,069-27364-WARNING-No se obtuvieron los metadatos de Image_5.jpg
+2022-05-10 09:58:13,071-27364-WARNING-No se obtuvieron los metadatos de Image_6.jpg
+2022-05-10 09:58:13,074-27364-INFO-Se crea el archivo de metadatos Image_7.txt
+2022-05-10 09:58:13,074-27364-WARNING-No se obtuvieron los metadatos de Image_8.jpg
+2022-05-10 09:58:13,077-27364-INFO-Se crea el archivo de metadatos Image_9.txt
+2022-05-10 09:58:13,085-27364-INFO-Se crea el archivo de metadatos Image_10.txt
+2022-05-10 09:58:16,547-27364-INFO-Se enviaron los archivos de metadatos al correo osmarfishy@gmail.com
+2022-05-10 09:58:24,899-27364-INFO-Documento de resultados hash_data.txt generado correctamente

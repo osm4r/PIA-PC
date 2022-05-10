@@ -1,0 +1,7 @@
+Image Orientation : Horizontal (normal)
+Image XResolution : 72
+Image YResolution : 72
+Image ResolutionUnit : Pixels/Inch
+Image ExifOffset : 90
+EXIF ExifImageWidth : 735
+EXIF ExifImageLength : 1344
